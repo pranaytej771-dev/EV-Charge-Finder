@@ -1,0 +1,15 @@
+{
+  "name": "electromap",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Beginner-friendly MERN project for finding EV charging stations.",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
