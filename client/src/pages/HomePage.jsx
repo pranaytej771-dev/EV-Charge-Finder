@@ -6,7 +6,6 @@ import { MdOutlineEvStation, MdMyLocation, MdCheckCircle } from "react-icons/md"
 const HomePage = () => {
   return (
     <div className="home-page">
-      {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
           <h1>Find Smart EV Charging Stations Near You</h1>
@@ -21,7 +20,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features-section">
         <div className="section-header">
           <h2>Why Choose ElectroMap?</h2>
@@ -51,7 +49,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
       <section className="how-it-works-section">
         <div className="section-header">
           <h2>How It Works</h2>
@@ -79,7 +76,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="footer-section">
         <div className="footer-content">
           <div className="footer-brand">

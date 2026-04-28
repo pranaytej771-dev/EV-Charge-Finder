@@ -24,7 +24,6 @@ const AuthPage = ({ onLogin, onRegister }) => {
   return (
     <div className="page auth-page-container fade-in">
       <div className="auth-wrapper">
-        {/* Page title is handled by individual auth components */}
         {message && <p className="info-banner slide-down">{message}</p>}
 
         {authView === "register" ? (

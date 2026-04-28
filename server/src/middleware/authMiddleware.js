@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (request, response, next) => {
-  // Expect token in Authorization header: Bearer <token>
   const authHeader = request.headers.authorization || "";
   const [scheme, token] = authHeader.split(" ");
   const secret = process.env.JWT_SECRET;

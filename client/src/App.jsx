@@ -55,7 +55,6 @@ function AppContent() {
     });
     setCurrentUser(authenticatedUser);
     
-    // We will let the EvFinderPage handle the pending search after redirect
     if (pendingSearch) {
       sessionStorage.setItem('pendingSearch', JSON.stringify(pendingSearch));
     }

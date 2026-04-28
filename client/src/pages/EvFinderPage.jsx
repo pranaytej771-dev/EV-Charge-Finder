@@ -15,7 +15,7 @@ const EvFinderPage = ({ currentUser, onSessionExpired }) => {
   const [cars, setCars] = useState([]);
   const [carsLoading, setCarsLoading] = useState(true);
   const [selectedCarId, setSelectedCarId] = useState("");
-  const [selectedCarDetails, setSelectedCarDetails] = useState(null);
+  const selectedCarDetails = cars.find((car) => car._id === selectedCarId) || null;
 
   const [latitude, setLatitude] = useState(defaultUserLocation.lat.toString());
   const [longitude, setLongitude] = useState(defaultUserLocation.lng.toString());
@@ -85,7 +85,6 @@ const EvFinderPage = ({ currentUser, onSessionExpired }) => {
         params: { lat: latValue, lng: lngValue }
       });
 
-      setSelectedCarDetails(cars.find((car) => car._id === selectedCarId) || null);
       setStations(data.stations);
       setSelectedStation(data.stations[0] || null);
       setSearchPerformed(true);
@@ -111,11 +110,6 @@ const EvFinderPage = ({ currentUser, onSessionExpired }) => {
   };
 
   const handleSearchClick = async () => {
-    if (!isAuthenticated) {
-      navigate("/login", { state: { message: "Please login to search stations.", pendingSearch: { latitudeValue: latitude, longitudeValue: longitude } } });
-      return;
-    }
-
     await executeStationSearch({
       latitudeValue: latitude,
       longitudeValue: longitude

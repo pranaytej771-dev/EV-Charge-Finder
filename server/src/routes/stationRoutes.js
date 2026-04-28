@@ -10,11 +10,10 @@ import { isAdmin, verifyToken } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-router.use(verifyToken);
 router.get("/search", searchNearestStations);
 router.get("/", getStations);
-router.post("/", isAdmin, createStation);
-router.put("/:id", isAdmin, updateStation);
-router.delete("/:id", isAdmin, deleteStation);
+router.post("/", verifyToken, isAdmin, createStation);
+router.put("/:id", verifyToken, isAdmin, updateStation);
+router.delete("/:id", verifyToken, isAdmin, deleteStation);
 
 export default router;

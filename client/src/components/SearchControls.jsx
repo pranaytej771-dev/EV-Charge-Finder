@@ -21,8 +21,6 @@ function SearchControls({
     if (isFetchingLocation) {
       setShowSuccess(false);
     } else if (latitude !== "13.0827" && latitude !== "" && !isFetchingLocation) {
-      // Assuming it's success if it's not fetching anymore and not default
-      // A better way is to just listen to changes when not fetching, but this works well enough
       setShowSuccess(true);
       timeout = setTimeout(() => setShowSuccess(false), 3000);
     }

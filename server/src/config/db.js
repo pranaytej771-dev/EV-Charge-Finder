@@ -35,7 +35,6 @@ const seedDefaultAdminIfMissing = async () => {
 
   const existingUser = await User.findOne({ email: adminEmail });
 
-  // If the default email already exists as a normal user, promote it to admin.
   if (existingUser) {
     existingUser.role = "admin";
     existingUser.password = hashedPassword;
@@ -73,12 +72,12 @@ const seedCarsIfEmpty = async () => {
 };
 
 const migrateLegacyStationCoordinates = async () => {
-  const legacyStations = await Station.find({
+  const legacyStations = await Station.collection.find({
     "coordinates.lat": { $exists: true },
     "coordinates.lng": { $exists: true }
   })
-    .select("_id coordinates")
-    .lean();
+    .project({ _id: 1, coordinates: 1 })
+    .toArray();
 
   if (legacyStations.length === 0) {
     return;
@@ -120,6 +119,6 @@ const migrateLegacyStationCoordinates = async () => {
     return;
   }
 
-  await Station.bulkWrite(updates);
+  await Station.collection.bulkWrite(updates);
   console.log(`Migrated ${updates.length} legacy station coordinates to GeoJSON`);
 };

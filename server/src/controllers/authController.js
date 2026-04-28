@@ -30,7 +30,6 @@ const formatUser = (user) => {
 
 export const registerUser = async (request, response, next) => {
   try {
-    // Registration only creates normal users; role is not accepted from frontend.
     const { name, email, password } = request.body;
 
     if (!name?.trim() || !email?.trim() || !password?.trim()) {
@@ -70,7 +69,6 @@ export const registerUser = async (request, response, next) => {
 
 export const loginUser = async (request, response, next) => {
   try {
-    // Login flow: validate credentials, then issue a signed JWT token.
     const { email, password } = request.body;
 
     if (!email?.trim() || !password?.trim()) {
